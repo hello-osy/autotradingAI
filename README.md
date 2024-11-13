@@ -8,6 +8,6 @@
 
 - 2024.11.13 ~ ??
 
-##사용방법
+## 사용방법
 
 - 업비트에서 open api key를 발급받고, upbit.key파일 첫 줄에 access key, 두번째 줄에 secret key입력하고 저장한다.
