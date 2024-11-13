@@ -14,7 +14,4 @@ exchange = ccxt.upbit(config={
 )
 
 def buy_decision():
-    if 1:
-        return True
-    else:
-        return False
+    return False

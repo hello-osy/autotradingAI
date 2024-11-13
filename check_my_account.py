@@ -14,6 +14,9 @@ exchange = ccxt.upbit(config={
     }
 )
 
-# balance
 balance = exchange.fetch_balance()
-pprint.pprint(balance)
+#pprint.pprint(balance) #pprint는 딕셔너리, 리스트를 그냥 이쁘게 출력하는 거임.
+print(balance['free']['KRW'])
+
+def account_KRW_amount():
+    return balance['free']['KRW']
