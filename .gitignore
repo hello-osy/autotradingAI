@@ -41,4 +41,4 @@ dist/
 .eggs/
 
 #업비트 open api 키
-#upbit.key
+upbit.key

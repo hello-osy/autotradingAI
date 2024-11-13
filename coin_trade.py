@@ -1,5 +1,6 @@
 import ccxt
 import pprint
+import market_analze
 
 with open("upbit.key") as f:
     lines = f.readlines()
@@ -13,6 +14,12 @@ exchange = ccxt.upbit(config={
     }
 )
 
-tickers = exchange.fetch_tickers()
-btc_krw = tickers['BTC/KRW']
-pprint.pprint(btc_krw)
+
+total_order_amount = 0 # 주문총액(KRW)
+
+if 0:
+    exchange.options['createMarketBuyOrderRequiresPrice'] = False
+    exchange.create_market_buy_order( #시장가 주문
+        symbol="KRW-BTC",
+        amount=total_order_amount          # 주문총액(KRW)
+    )
