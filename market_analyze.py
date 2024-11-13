@@ -23,8 +23,8 @@ prices = deque(maxlen=30)
 # 변동성 기록 리스트
 volatility_records = []
 
-# 변동성 기준 설정 (예: 변동성이 1000 KRW 이하일 때 True 반환)
-VOLATILITY_THRESHOLD = 1000
+# 변동성 기준 설정 (예: 변동성이 100000 이하일 때 True 반환)
+VOLATILITY_THRESHOLD = 100000
 
 # 프로그램 시작 시각 및 시작 가격
 start_time = time.time()
@@ -51,7 +51,7 @@ def get_price_change():
         change_from_start = current_price - initial_price
         change_from_start_percentage = (change_from_start / initial_price) * 100 if initial_price else 0
         print(f"프로그램 시작 가격: {initial_price}, 현재가: {current_price}, 변동: {change_from_start} KRW ({change_from_start_percentage:.2f}%)")
-        
+
         # 10초 전 가격과 비교
         price_10_seconds_ago = prices[-2]
         change_10_sec = current_price - price_10_seconds_ago
@@ -94,9 +94,9 @@ def print_volatility_statistics():
         max_volatility = max(volatility_records)
         min_volatility = min(volatility_records)
         avg_volatility = sum(volatility_records) / len(volatility_records)
-        print(f"최고 변동성: {max_volatility:.2f} KRW")
-        print(f"최저 변동성: {min_volatility:.2f} KRW")
-        print(f"평균 변동성: {avg_volatility:.2f} KRW")
+        print(f"최고 변동성: {max_volatility:.2f}")
+        print(f"최저 변동성: {min_volatility:.2f}")
+        print(f"평균 변동성: {avg_volatility:.2f}")
 
 # 종료 시 CSV 파일에 기록하는 함수
 def save_to_csv():
