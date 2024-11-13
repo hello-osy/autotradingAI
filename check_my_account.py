@@ -1,5 +1,6 @@
 import ccxt
 import pprint
+import market_analyze
 
 with open("upbit.key") as f:
     lines = f.readlines()
@@ -13,3 +14,6 @@ exchange = ccxt.upbit(config={
     }
 )
 
+# balance
+balance = exchange.fetch_balance()
+pprint.pprint(balance)

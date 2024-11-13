@@ -1,6 +1,6 @@
 import ccxt
 import pprint
-import market_analze
+import market_analyze
 
 with open("upbit.key") as f:
     lines = f.readlines()
@@ -17,7 +17,7 @@ exchange = ccxt.upbit(config={
 
 total_order_amount = 0 # 주문총액(KRW)
 
-if 0:
+if market_analyze.buy_decision:
     exchange.options['createMarketBuyOrderRequiresPrice'] = False
     exchange.create_market_buy_order( #시장가 주문
         symbol="KRW-BTC",
