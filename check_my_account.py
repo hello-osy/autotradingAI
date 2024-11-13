@@ -19,4 +19,4 @@ balance = exchange.fetch_balance()
 print(balance['free']['KRW'])
 
 def account_KRW_amount():
-    return balance['free']['KRW']
+    return int(balance['free']['KRW'])

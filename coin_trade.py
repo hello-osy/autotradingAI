@@ -29,7 +29,7 @@ def buy_BTC():
             )
             print(f'KRW {total_order_amount}만큼 시장가 BTC 구매 주문을 넣었습니다.')
         else:
-            print(f"계좌에 들어있는 돈이 KRW{check_my_account.account_KRW_amount}으로, 현금 최소 보유량 {account_KRW_limit}보다 작아서 구매 주문이 불가합니다.")
+            print(f"계좌에 들어있는 돈이 KRW {check_my_account.account_KRW_amount()}으로, 현금 최소 보유량 KRW {account_KRW_limit}보다 작아서 구매 주문이 불가합니다.")
     else:
         print("시장 분석 결과에 따라서, 지금은 구매 주문을 넣지 않겠습니다.")
 
