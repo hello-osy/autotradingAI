@@ -42,3 +42,6 @@ dist/
 
 #업비트 open api 키
 upbit.key
+
+#분석 결과
+*.csv
