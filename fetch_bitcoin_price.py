@@ -1,8 +1,7 @@
 import requests
 import os
 from datetime import datetime
-
-os.environ["GITHUB_REPOSITORY"] = "hello-osy/autotradingAI"
+import pytz  # pytz 설치 필요
 
 def fetch_bitcoin_price():
     url = "https://api.upbit.com/v1/ticker"
@@ -38,10 +37,18 @@ def create_github_issue(title, body):
 
 if __name__ == "__main__":
     try:
+        # KST 시간 가져오기
+        kst = pytz.timezone('Asia/Seoul')
+        now = datetime.now(kst).strftime("%Y-%m-%d %H:%M:%S")
+        
+        # 비트코인 가격 가져오기
         price = fetch_bitcoin_price()
-        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        title = f"Bitcoin Price Update: {now}"
+        
+        # 이슈 제목과 내용 생성
+        title = f"Bitcoin Price Update: {now} KST"
         body = f"The current Bitcoin price is **{price:,} KRW**."
+        
+        # GitHub 이슈 생성
         create_github_issue(title, body)
     except Exception as e:
         print(f"Error: {e}")
