@@ -1,0 +1,33 @@
+name: Bitcoin Price Fetcher
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 한국 시간 오전 9시 (KST = UTC +9)
+
+jobs:
+  fetch-price:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Repository 체크아웃
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      # 2. Python 설치
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      # 3. Dependencies 설치
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      # 4. Upbit에서 비트코인 가격 가져오고 Issue 생성
+      - name: Fetch Bitcoin price and create issue
+        run: |
+          python fetch_bitcoin_price.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
